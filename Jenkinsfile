@@ -7,7 +7,7 @@ pipeline {
     stage('build and security scan') {
       parallel {
         stage('build') {
-          agent { label 'ecs-builder' }
+          agent { label 'ecs-builder-node12' }
           steps {
             initBuild()
             sh 'yarn'
@@ -16,7 +16,7 @@ pipeline {
         }
 
         stage('security scan') {
-          agent { label 'ecs-builder' }
+          agent { label 'ecs-builder-node12' }
           steps {
             initBuild()
             sh 'yarn install'

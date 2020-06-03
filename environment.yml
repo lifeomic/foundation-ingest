@@ -1,0 +1,9 @@
+name: foundation-ingest
+channels:
+- https://repo.anaconda.com/pkgs/main/linux-64/
+dependencies:
+- pip:
+    - pytest
+    - xmltodict==0.11.0
+    - pyyaml==5.3.1
+    - https://github.com/lifeomic/hgvs/archive/v1.0.5.tar.gz

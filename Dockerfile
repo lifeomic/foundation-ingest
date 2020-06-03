@@ -10,19 +10,10 @@ RUN mkdir -p /opt \
   && cd hgvs-${HGVS_VERSION} \
   && python setup.py install
 
-# vt ---------------------------------------------------------------------------
-# -> /usr/local/bin/vt
-RUN cd /opt \
-  && git clone --depth 1 https://github.com/atks/vt \
-  && cd /opt/vt \
-  && make \
-  && cp vt /usr/local/bin \
-  && rm -rf /opt/vt
-
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 COPY . /opt/app
 RUN pip install -r requirements.txt
 RUN cp /opt/hgvs-${HGVS_VERSION}/pyhgvs/data/refGene.hg19.txt /opt/app/refGene.hg19.txt
 
-ENTRYPOINT ["python", "/opt/app/src/convert.py"]
+ENTRYPOINT ["python", "/opt/app/src/run.py"]
