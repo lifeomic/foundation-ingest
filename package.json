@@ -2,6 +2,10 @@
   "name": "foundation-ingest",
   "version": "1.0.0",
   "scripts": {
+    "setup": "conda create -n foundation-ingest python=3.6",
+    "update": "conda env update -n foundation-ingest -f environment.yml",
+    "activate": "conda activate foundation-ingest",
+    "test": "pytest src",
     "build": "docker build -t $npm_package_name . && docker tag $npm_package_name:latest lifeomic/$npm_package_name:$npm_package_version"
   },
   "devDependencies": {

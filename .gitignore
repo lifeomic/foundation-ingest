@@ -32,6 +32,13 @@ wheels/
 *.egg
 MANIFEST
 
+foundation/
+src/tests/data/foundation/
+
+*.fa
+*.fa.*
+*.hg19.txt
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.

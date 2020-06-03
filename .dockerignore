@@ -5,5 +5,9 @@
 node_modules
 npm-debug.log
 test
-
+yarn.lock
 *.md
+*.fa
+*.fa.fai
+*.fa.gz
+*.hg19.txt
