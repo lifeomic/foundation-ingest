@@ -48,12 +48,8 @@ def get_specimen_name(results_payload_dict):
 
 
 def process(results_payload_dict, args):
-    pmi = results_payload_dict.get("FinalReport", {}).get("PMI", {})
-    sample = results_payload_dict.get("FinalReport", {}).get("Sample", {})
     sample_name = get_specimen_name(results_payload_dict)
     variant_report = results_payload_dict.get("variant-report", {})
-    biomarkers = variant_report.get("biomarkers", {})
-    sample_name = get_specimen_name(results_payload_dict)
 
     os.makedirs(f"{args.output}/foundation/{sample_name}", exist_ok=True)
 
