@@ -21,6 +21,9 @@ def get_test_yml(results_payload_dict, sample_name, output, source):
                 "bodySite": variant_report.get("@tissue-of-origin"),
                 "bodySiteSystem": "http://foundation.com/bodySite",
                 "bodySiteDisplay": variant_report.get("@tissue-of-origin"),
+                "diagnosis": pmi.get("SubmittedDiagnosis"),
+                "diagnosisDisplay": pmi.get("SubmittedDiagnosis"),
+                "diagnosisSystem": "http://foundation.com/diagnosis",
                 "patientInfo": {
                     "firstName": pmi.get("FirstName"),
                     "lastName": pmi.get("LastName"),
