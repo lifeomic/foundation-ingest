@@ -86,7 +86,7 @@ def main():
         "-r, --reference",
         dest="fasta",
         required=False,
-        default="/tmp/reference/GRCh37.fa.gz ",
+        default="/tmp/reference/GRCh37.fa.gz",
         help="Path to reference genome",
     )
     parser.add_argument(
@@ -106,7 +106,7 @@ def main():
         "-o, --output",
         dest="output",
         required=False,
-        default="/tmp",
+        default="/tmp/.lifeomic",
         help="Output location",
     )
 
