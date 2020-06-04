@@ -73,6 +73,9 @@ def test_yml():
                 'bodySite': 'Bone',
                 'bodySiteSystem': 'http://foundation.com/bodySite',
                 'bodySiteDisplay': 'Bone',
+                'diagnosis': 'PEDIATRIC Bone osteosarcoma',
+                'diagnosisDisplay': 'PEDIATRIC Bone osteosarcoma',
+                'diagnosisSystem': 'http://foundation.com/diagnosis',
                 'patientInfo': {
                     'firstName': 'Test',
                     'lastName': 'Patient',

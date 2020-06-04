@@ -53,7 +53,9 @@ def process(results_payload_dict, args):
 
     os.makedirs(f"{args.output}/foundation/{sample_name}", exist_ok=True)
 
-    yaml_file = get_test_yml(results_payload_dict, sample_name, args.output, args.source)
+    yaml_file = get_test_yml(
+        results_payload_dict, sample_name, args.output, args.source
+    )
     variants = []
 
     if (
@@ -81,7 +83,11 @@ def main():
     )
 
     parser.add_argument(
-        "-r, --reference", dest="fasta", required=True, help="Path to reference genome"
+        "-r, --reference",
+        dest="fasta",
+        required=False,
+        default="/tmp/reference/GRCh37.fa.gz ",
+        help="Path to reference genome",
     )
     parser.add_argument(
         "-g, --genes",
@@ -97,7 +103,11 @@ def main():
         "-s, --source", dest="source", required=False, help="Source file name"
     )
     parser.add_argument(
-        "-o, --output", dest="output", required=True, help="Output location"
+        "-o, --output",
+        dest="output",
+        required=False,
+        default="/tmp",
+        help="Output location",
     )
 
     args = parser.parse_args()
