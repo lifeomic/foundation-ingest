@@ -1,6 +1,6 @@
 {
   "name": "foundation-ingest",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "setup": "conda create -n foundation-ingest python=3.6",
     "update": "conda env update -n foundation-ingest -f environment.yml",
