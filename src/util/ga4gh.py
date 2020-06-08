@@ -14,7 +14,7 @@ def get_test_yml(results_payload_dict, sample_name, output, source):
             {
                 "name": "Foundation Medicine",
                 "reference": "GRCh37",
-                "source": source,
+                "sourceFile": source,
                 "testType": sample.get("TestType"),
                 "indexedDate": sample.get("ReceivedDate"),
                 "patientIdentifier": pmi.get("MRN"),
@@ -41,8 +41,7 @@ def get_test_yml(results_payload_dict, sample_name, output, source):
                     {
                         "type": "shortVariant",
                         "sequenceType": "somatic",
-                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.vcf",
-                        "normalize": True
+                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.nrm.vcf",
                     },
                     {
                         "type": "copyNumberVariant",

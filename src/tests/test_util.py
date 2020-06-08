@@ -66,7 +66,7 @@ def test_yml():
             {
                 'name': 'Foundation Medicine',
                 'reference': 'GRCh37',
-                'source': 'source',
+                'sourceFile': 'source',
                 'testType': 'FoundationOne Heme',
                 'indexedDate': '2016-07-21',
                 'patientIdentifier': '12345678',
@@ -86,8 +86,7 @@ def test_yml():
                     {
                         'type': 'shortVariant',
                         'sequenceType': 'somatic',
-                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.vcf',
-                        'normalize': True
+                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.nrm.vcf'
                     },
                     {
                         'type': 'copyNumberVariant',
