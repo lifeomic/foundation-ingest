@@ -109,7 +109,7 @@ def extract_vcf(variants, specimen_name, fasta, genes, output):
                 f"{chrom}\t{offset}\t.\t{ref}\t{alt}\t.\tPASS\tDP={dp};AF={af};VENDSIG={vendsig}\tGT:DP:AD\t{gt}:{dp}:{ad}\n"
             )
 
-    vcf_name = f'{output}/foundation/{specimen_name}/{specimen_name}.vcf'
+    vcf_name = f'{output}/{specimen_name}/{specimen_name}.vcf'
     os.system(f'grep "^#" /tmp/unsorted.vcf > {vcf_name} && grep -v "^#" /tmp/unsorted.vcf | sort -V -k1,1 -k2,2n >> {vcf_name}')
 
 

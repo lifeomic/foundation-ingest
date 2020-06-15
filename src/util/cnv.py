@@ -99,7 +99,7 @@ def write_copy_numbers_to_cnv(cnv_dict, sample_id, output):
     logger.info("Saving copy numbers to cnv file")
 
     with open(
-        "{}/foundation/{}/{}.copynumber.csv".format(output, sample_id, sample_id),
+        "{}/{}/{}.copynumber.csv".format(output, sample_id, sample_id),
         "w",
     ) as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=",")

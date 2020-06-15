@@ -33,7 +33,7 @@ wheels/
 MANIFEST
 
 foundation/
-src/tests/data/foundation/
+src/tests/data/SA-1612348/
 
 *.fa
 *.fa.*

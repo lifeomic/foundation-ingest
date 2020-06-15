@@ -51,7 +51,7 @@ def process(results_payload_dict, args):
     sample_name = get_specimen_name(results_payload_dict)
     variant_report = results_payload_dict.get("variant-report", {})
 
-    os.makedirs(f"{args.output}/foundation/{sample_name}", exist_ok=True)
+    os.makedirs(f"{args.output}/{sample_name}", exist_ok=True)
 
     yaml_file = get_test_yml(
         results_payload_dict, sample_name, args.output, args.source, args.includePatientInfo
@@ -72,7 +72,7 @@ def process(results_payload_dict, args):
     extract_fusion_variant(results_payload_dict, sample_name, args.output)
 
     with open(
-        f"{args.output}/foundation/{sample_name}/{sample_name}.ga4gh.yml", "w",
+        f"{args.output}/{sample_name}/{sample_name}.ga4gh.tmp", "w",
     ) as file:
         yaml.dump(yaml_file, file)
 
@@ -106,7 +106,7 @@ def main():
         "-o, --output",
         dest="output",
         required=False,
-        default="/tmp/.lifeomic",
+        default="/tmp",
         help="Output location",
     )
     parser.add_argument(

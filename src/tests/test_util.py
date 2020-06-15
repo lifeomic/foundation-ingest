@@ -18,13 +18,13 @@ def cleanup():
 
 def test_cnv():
     cleanup()
-    os.makedirs(f"{BASE_PATH}/data/foundation/SA-1612348", exist_ok=True)
+    os.makedirs(f"{BASE_PATH}/data/SA-1612348", exist_ok=True)
 
     xml = read_xml(f"{BASE_PATH}/data/sample.xml")
 
     extract_copy_numbers(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data")
 
-    csv = open(f"{BASE_PATH}/data/foundation/SA-1612348/SA-1612348.copynumber.csv")
+    csv = open(f"{BASE_PATH}/data/SA-1612348/SA-1612348.copynumber.csv")
     text = csv.read()
     csv.close()
 
@@ -39,13 +39,13 @@ SA-1612348,RAD21,7.0,gain,"{'number-of-exons': '13 of 13', 'status': 'amplificat
 
 def test_fnv():
     cleanup()
-    os.makedirs(f"{BASE_PATH}/data/foundation/SA-1612348", exist_ok=True)
+    os.makedirs(f"{BASE_PATH}/data/SA-1612348", exist_ok=True)
 
     xml = read_xml(f"{BASE_PATH}/data/sample.xml")
 
     extract_fusion_variant(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data")
 
-    csv = open(f"{BASE_PATH}/data/foundation/SA-1612348/SA-1612348.structural.csv")
+    csv = open(f"{BASE_PATH}/data/SA-1612348/SA-1612348.structural.csv")
     text = csv.read()
     csv.close()
 
@@ -55,7 +55,7 @@ SA-1612348,NF1,N/A,truncation,chr17,29557687,29887856,chr6,66426718,66427149,Lik
 
 def test_yml():
     cleanup()
-    os.makedirs(f"{BASE_PATH}/data/foundation/SA-1612348", exist_ok=True)
+    os.makedirs(f"{BASE_PATH}/data/SA-1612348", exist_ok=True)
 
     xml = read_xml(f"{BASE_PATH}/data/sample.xml")
 
@@ -86,23 +86,23 @@ def test_yml():
                     {
                         'type': 'shortVariant',
                         'sequenceType': 'somatic',
-                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.nrm.vcf'
+                        'fileName': 'SA-1612348/SA-1612348.nrm.vcf'
                     },
                     {
                         'type': 'copyNumberVariant',
                         'sequenceType': 'somatic',
-                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.copynumber.csv'
+                        'fileName': 'SA-1612348/SA-1612348.copynumber.csv'
                     },
                     {
                         'type': 'structuralVariant',
                         'sequenceType': 'somatic',
-                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.structural.csv'
+                        'fileName': 'SA-1612348/SA-1612348.structural.csv'
                     }
                 ],
                 'msi': 'stable',
                 'tmb': 'low',
                 'tmbScore': 0.73,
-                'reportFile': '.lifeomic/foundation/SA-1612348/SA-1612348.report.pdf'
+                'reportFile': 'SA-1612348/SA-1612348.report.pdf'
             }
         ]
     }
