@@ -1,7 +1,8 @@
 import os
 import base64
 
-def get_test_yml(results_payload_dict, sample_name, output, source):
+
+def get_test_yml(results_payload_dict, sample_name, output, source, includePatientInfo):
     pmi = results_payload_dict.get("FinalReport", {}).get("PMI", {})
     sample = results_payload_dict.get("FinalReport", {}).get("Sample", {})
     variant_report = results_payload_dict.get("variant-report", {})
@@ -24,19 +25,6 @@ def get_test_yml(results_payload_dict, sample_name, output, source):
                 "diagnosis": pmi.get("SubmittedDiagnosis"),
                 "diagnosisDisplay": pmi.get("SubmittedDiagnosis"),
                 "diagnosisSystem": "http://foundation.com/diagnosis",
-                "patientInfo": {
-                    "firstName": pmi.get("FirstName"),
-                    "lastName": pmi.get("LastName"),
-                    "gender": pmi.get("Gender").lower(),
-                    "dob": pmi.get("DOB"),
-                    "identifiers": [
-                        {
-                            "codingSystem": "http://hl7.org/fhir/v2/0203",
-                            "codingCode": "MR",
-                            "value": pmi.get("MRN"),
-                        }
-                    ],
-                },
                 "files": [
                     {
                         "type": "shortVariant",
@@ -57,6 +45,21 @@ def get_test_yml(results_payload_dict, sample_name, output, source):
             }
         ]
     }
+
+    if includePatientInfo:
+        yaml_file["tests"][0]["patientInfo"] = {
+            "firstName": pmi.get("FirstName"),
+            "lastName": pmi.get("LastName"),
+            "gender": pmi.get("Gender").lower(),
+            "dob": pmi.get("DOB"),
+            "identifiers": [
+                {
+                    "codingSystem": "http://hl7.org/fhir/v2/0203",
+                    "codingCode": "MR",
+                    "value": pmi.get("MRN"),
+                }
+            ],
+        }
 
     if "microsatellite-instability" in biomarkers:
         values = {

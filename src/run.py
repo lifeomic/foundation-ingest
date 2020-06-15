@@ -54,7 +54,7 @@ def process(results_payload_dict, args):
     os.makedirs(f"{args.output}/foundation/{sample_name}", exist_ok=True)
 
     yaml_file = get_test_yml(
-        results_payload_dict, sample_name, args.output, args.source
+        results_payload_dict, sample_name, args.output, args.source, args.includePatientInfo
     )
     variants = []
 
@@ -108,6 +108,9 @@ def main():
         required=False,
         default="/tmp/.lifeomic",
         help="Output location",
+    )
+    parser.add_argument(
+        "-p, --includePatientInfo", dest="includePatientInfo", required=False, help="If present, the patient info will be added to the manifest file"
     )
 
     args = parser.parse_args()
