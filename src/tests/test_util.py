@@ -61,8 +61,6 @@ def test_yml():
 
     yml = get_test_yml(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data", "source", "true")
 
-    print(yml)
-
     assert yml == {
         'tests': [
             {
