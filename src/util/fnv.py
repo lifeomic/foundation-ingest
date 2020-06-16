@@ -126,7 +126,7 @@ def write_fusions_to_fnv(fnv_dict, sample_id, output):
     logger.info("Saving fusion variants to fnv file")
 
     with open(
-        "{}/foundation/{}/{}.structural.csv".format(output, sample_id, sample_id),
+        "{}/{}/{}.structural.csv".format(output, sample_id, sample_id),
         "w",
     ) as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=",")
