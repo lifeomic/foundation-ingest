@@ -42,6 +42,19 @@ outputs:
     outputBinding:
       glob: '/tmp/**/*.ga4gh.tmp'
 
+
+s:license: https://opensource.org/licenses/MIT
+s:author:
+  - class: s:Organization
+    s:email: phc-clinical-research@lifeomic.com
+    s:name: LifeOmic Clinical Research Team
+
+$namespaces:
+ s: https://schema.org/
+
+$schemas:
+ - https://schema.org/version/latest/schema.rdf
+
 doc: |
   This tool converts a Foundation XML file into omic files that can be
   ingested into the LifeOmic Precision Health Cloud (https://lifeomic.com/products/precision-health-cloud/).
