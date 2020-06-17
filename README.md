@@ -1,29 +1,17 @@
-# README #
+# foundation-ingest #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repo builds a tool that can be used in workflows within the PHC to convert Foundation Medicine XML files into the proper genomic files for ingestion into the PHC.
 
-### What is this repository for? ###
+## Setup
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+```
+make setup
+conda activate foundation-ingest
+```
 
-### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+## Tests
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+```
+make test
+```
