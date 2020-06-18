@@ -29,17 +29,17 @@ def get_test_yml(results_payload_dict, sample_name, output, source, includePatie
                     {
                         "type": "shortVariant",
                         "sequenceType": "somatic",
-                        "fileName": f"{sample_name}/{sample_name}.nrm.vcf",
+                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.nrm.vcf",
                     },
                     {
                         "type": "copyNumberVariant",
                         "sequenceType": "somatic",
-                        "fileName": f"{sample_name}/{sample_name}.copynumber.csv",
+                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.copynumber.csv",
                     },
                     {
                         "type": "structuralVariant",
                         "sequenceType": "somatic",
-                        "fileName": f"{sample_name}/{sample_name}.structural.csv",
+                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.structural.csv",
                     },
                 ],
             }
@@ -87,6 +87,6 @@ def get_test_yml(results_payload_dict, sample_name, output, source, includePatie
 
         yaml_file["tests"][0][
             "reportFile"
-        ] = f"{sample_name}/{sample_name}.report.pdf"
+        ] = f".lifeomic/foundation/{sample_name}/{sample_name}.report.pdf"
 
     return yaml_file
