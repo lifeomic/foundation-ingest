@@ -1,0 +1,26 @@
+name: PR Branch Build and Test
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Unit Test
+      uses: goanpeca/setup-miniconda@v1
+      with:
+        activate-environment: foundation-ingest
+        environment-file: environment.yml
+        python-version: 3.6
+        auto-activate-base: false
+    - shell: bash -l {0}
+      run: |
+        pytest src
+    - name: Build Docker
+      uses: docker/build-push-action@v1
+      with:
+        push: false
