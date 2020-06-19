@@ -6,6 +6,7 @@ import os
 import xmltodict
 import yaml
 import shutil
+from pathlib import Path
 from util.log import logger
 from util.vcf import extract_vcf
 from util.cnv import extract_copy_numbers
@@ -53,8 +54,10 @@ def process(results_payload_dict, args):
 
     os.makedirs(f"{args.output}/{sample_name}", exist_ok=True)
 
+    base_xml_name = Path(args.xml_file).stem
+
     yaml_file = get_test_yml(
-        results_payload_dict, sample_name, args.output, args.source, args.includePatientInfo
+        results_payload_dict, base_xml_name, args.output, args.source, args.includePatientInfo
     )
     variants = []
 

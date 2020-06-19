@@ -61,6 +61,8 @@ def test_yml():
 
     yml = get_test_yml(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data", "source", "true")
 
+    print(yml)
+
     assert yml == {
         'tests': [
             {
@@ -86,23 +88,23 @@ def test_yml():
                     {
                         'type': 'shortVariant',
                         'sequenceType': 'somatic',
-                        'fileName': 'SA-1612348/SA-1612348.nrm.vcf'
+                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.nrm.vcf'
                     },
                     {
                         'type': 'copyNumberVariant',
                         'sequenceType': 'somatic',
-                        'fileName': 'SA-1612348/SA-1612348.copynumber.csv'
+                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.copynumber.csv'
                     },
                     {
                         'type': 'structuralVariant',
                         'sequenceType': 'somatic',
-                        'fileName': 'SA-1612348/SA-1612348.structural.csv'
+                        'fileName': '.lifeomic/foundation/SA-1612348/SA-1612348.structural.csv'
                     }
                 ],
                 'msi': 'stable',
                 'tmb': 'low',
                 'tmbScore': 0.73,
-                'reportFile': 'SA-1612348/SA-1612348.report.pdf'
+                'reportFile': '.lifeomic/foundation/SA-1612348/SA-1612348.report.pdf'
             }
         ]
     }

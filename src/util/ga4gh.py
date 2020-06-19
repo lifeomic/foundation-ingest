@@ -2,13 +2,13 @@ import os
 import base64
 
 
-def get_test_yml(results_payload_dict, sample_name, output, source, includePatientInfo):
+def get_test_yml(results_payload_dict, base_xml_name, output, source, includePatientInfo):
     pmi = results_payload_dict.get("FinalReport", {}).get("PMI", {})
     sample = results_payload_dict.get("FinalReport", {}).get("Sample", {})
     variant_report = results_payload_dict.get("variant-report", {})
     biomarkers = variant_report.get("biomarkers", {})
 
-    os.makedirs(f"{output}/{sample_name}", exist_ok=True)
+    os.makedirs(f"{output}/{base_xml_name}", exist_ok=True)
 
     yaml_file = {
         "tests": [
@@ -29,17 +29,17 @@ def get_test_yml(results_payload_dict, sample_name, output, source, includePatie
                     {
                         "type": "shortVariant",
                         "sequenceType": "somatic",
-                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.nrm.vcf",
+                        "fileName": f".lifeomic/foundation/{base_xml_name}/{base_xml_name}.nrm.vcf",
                     },
                     {
                         "type": "copyNumberVariant",
                         "sequenceType": "somatic",
-                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.copynumber.csv",
+                        "fileName": f".lifeomic/foundation/{base_xml_name}/{base_xml_name}.copynumber.csv",
                     },
                     {
                         "type": "structuralVariant",
                         "sequenceType": "somatic",
-                        "fileName": f".lifeomic/foundation/{sample_name}/{sample_name}.structural.csv",
+                        "fileName": f".lifeomic/foundation/{base_xml_name}/{base_xml_name}.structural.csv",
                     },
                 ],
             }
@@ -80,13 +80,13 @@ def get_test_yml(results_payload_dict, sample_name, output, source, includePatie
 
     if "ReportPDF" in results_payload_dict:
         pdf = base64.b64decode(results_payload_dict["ReportPDF"])
-        report_file = f"{output}/{sample_name}/{sample_name}.report.pdf"
+        report_file = f"{output}/{base_xml_name}/{base_xml_name}.report.pdf"
 
         with open(report_file, "wb") as pdf_file:
             pdf_file.write(pdf)
 
         yaml_file["tests"][0][
             "reportFile"
-        ] = f".lifeomic/foundation/{sample_name}/{sample_name}.report.pdf"
+        ] = f".lifeomic/foundation/{base_xml_name}/{base_xml_name}.report.pdf"
 
     return yaml_file
