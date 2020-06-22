@@ -68,14 +68,14 @@ def process(results_payload_dict, args):
         variants_dict = variant_report["short-variants"]["short-variant"]
         variants = variants_dict if isinstance(variants_dict, list) else [variants_dict]
 
-    extract_vcf(variants, sample_name, args.fasta, args.genes, args.output)
+    extract_vcf(variants, sample_name, args.fasta, args.genes, base_xml_name, args.output)
 
-    extract_copy_numbers(results_payload_dict, sample_name, args.output)
+    extract_copy_numbers(results_payload_dict, sample_name, base_xml_name, args.output)
 
-    extract_fusion_variant(results_payload_dict, sample_name, args.output)
+    extract_fusion_variant(results_payload_dict, sample_name, base_xml_name, args.output)
 
     with open(
-        f"{args.output}/{sample_name}/{sample_name}.ga4gh.tmp", "w",
+        f"{args.output}/{base_xml_name}/{base_xml_name}.ga4gh.tmp", "w",
     ) as file:
         yaml.dump(yaml_file, file)
 

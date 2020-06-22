@@ -71,7 +71,7 @@ def extract_end_position(fusion_variant, position):
     return int(fusion_variant["@pos2"].split(":")[1].split("-")[0])
 
 
-def extract_fusion_variant(results_payload_dict, sample_id, output):
+def extract_fusion_variant(results_payload_dict, sample_id, base_xml_name, output):
     logger.info("Extracting fusion variants from xml")
     fusion_variant_list = {"FusionVariants": []}
 
@@ -119,14 +119,14 @@ def extract_fusion_variant(results_payload_dict, sample_id, output):
                     ast.literal_eval(json.dumps(fusion_variant_value))
                 )
 
-    write_fusions_to_fnv(fusion_variant_list, sample_id, output)
+    write_fusions_to_fnv(fusion_variant_list, base_xml_name, output)
 
 
-def write_fusions_to_fnv(fnv_dict, sample_id, output):
+def write_fusions_to_fnv(fnv_dict, base_xml_name, output):
     logger.info("Saving fusion variants to fnv file")
 
     with open(
-        "{}/{}/{}.structural.csv".format(output, sample_id, sample_id),
+        "{}/{}/{}.structural.csv".format(output, base_xml_name, base_xml_name),
         "w",
     ) as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=",")

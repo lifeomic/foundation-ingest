@@ -18,13 +18,13 @@ def cleanup():
 
 def test_cnv():
     cleanup()
-    os.makedirs(f"{BASE_PATH}/data/SA-1612348", exist_ok=True)
+    os.makedirs(f"{BASE_PATH}/data/sample", exist_ok=True)
 
     xml = read_xml(f"{BASE_PATH}/data/sample.xml")
 
-    extract_copy_numbers(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data")
+    extract_copy_numbers(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", "sample", f"{BASE_PATH}/data")
 
-    csv = open(f"{BASE_PATH}/data/SA-1612348/SA-1612348.copynumber.csv")
+    csv = open(f"{BASE_PATH}/data/sample/sample.copynumber.csv")
     text = csv.read()
     csv.close()
 
@@ -39,13 +39,13 @@ SA-1612348,RAD21,7.0,gain,"{'number-of-exons': '13 of 13', 'status': 'amplificat
 
 def test_fnv():
     cleanup()
-    os.makedirs(f"{BASE_PATH}/data/SA-1612348", exist_ok=True)
+    os.makedirs(f"{BASE_PATH}/data/sample", exist_ok=True)
 
     xml = read_xml(f"{BASE_PATH}/data/sample.xml")
 
-    extract_fusion_variant(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data")
+    extract_fusion_variant(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", "sample", f"{BASE_PATH}/data")
 
-    csv = open(f"{BASE_PATH}/data/SA-1612348/SA-1612348.structural.csv")
+    csv = open(f"{BASE_PATH}/data/sample/sample.structural.csv")
     text = csv.read()
     csv.close()
 

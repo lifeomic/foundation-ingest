@@ -24,7 +24,7 @@ def hgvs_2_vcf(
             return parse_splice(cds_effect, position_value, strand, fasta)
 
 
-def extract_vcf(variants, specimen_name, fasta, genes, output):
+def extract_vcf(variants, specimen_name, fasta, genes, base_xml_name, output):
     with open("/tmp/unsorted.vcf", "w+") as vcf_file:
         vcf_file.write("##fileformat=VCFv4.2\n")
         vcf_file.write("##source=foundation-xml-fhir\n")
@@ -109,7 +109,7 @@ def extract_vcf(variants, specimen_name, fasta, genes, output):
                 f"{chrom}\t{offset}\t.\t{ref}\t{alt}\t.\tPASS\tDP={dp};AF={af};VENDSIG={vendsig}\tGT:DP:AD\t{gt}:{dp}:{ad}\n"
             )
 
-    vcf_name = f'{output}/{specimen_name}/{specimen_name}.vcf'
+    vcf_name = f'{output}/{base_xml_name}/{base_xml_name}.vcf'
     os.system(f'grep "^#" /tmp/unsorted.vcf > {vcf_name} && grep -v "^#" /tmp/unsorted.vcf | sort -V -k1,1 -k2,2n >> {vcf_name}')
 
 
