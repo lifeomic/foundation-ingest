@@ -48,7 +48,7 @@ def gather_attributes(copy_number):
     return attributes
 
 
-def extract_copy_numbers(results_payload_dict, sample_id, output):
+def extract_copy_numbers(results_payload_dict, sample_id, base_xml_name, output):
     logger.info("Extracting copy numbers from xml")
     copy_number_list = {"CopyNumbers": []}
 
@@ -92,14 +92,14 @@ def extract_copy_numbers(results_payload_dict, sample_id, output):
                     ast.literal_eval(json.dumps(copy_number_value))
                 )
 
-    write_copy_numbers_to_cnv(copy_number_list, sample_id, output)
+    write_copy_numbers_to_cnv(copy_number_list, base_xml_name, output)
 
 
-def write_copy_numbers_to_cnv(cnv_dict, sample_id, output):
+def write_copy_numbers_to_cnv(cnv_dict, base_xml_name, output):
     logger.info("Saving copy numbers to cnv file")
 
     with open(
-        "{}/{}/{}.copynumber.csv".format(output, sample_id, sample_id),
+        "{}/{}/{}.copynumber.csv".format(output, base_xml_name, base_xml_name),
         "w",
     ) as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=",")

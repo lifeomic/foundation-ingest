@@ -34,6 +34,7 @@ MANIFEST
 
 foundation/
 src/tests/data/SA-1612348/
+src/tests/data/sample/
 
 *.fa
 *.fa.*
