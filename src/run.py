@@ -57,7 +57,7 @@ def process(results_payload_dict, args):
     base_xml_name = Path(args.xml_file).stem
 
     yaml_file = get_test_yml(
-        results_payload_dict, base_xml_name, args.output, args.source, args.includePatientInfo
+        results_payload_dict, base_xml_name, args.output, args.source, args.includePatientInfo, args.report_file
     )
     variants = []
 
@@ -101,6 +101,9 @@ def main():
     )
     parser.add_argument(
         "-x, --xml", dest="xml_file", required=True, help="Path to the XML file"
+    )
+    parser.add_argument(
+        "-t, --report", dest="report_file", required=False, help="Path to the report file"
     )
     parser.add_argument(
         "-s, --source", dest="source", required=False, help="Source file name"
