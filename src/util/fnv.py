@@ -126,7 +126,7 @@ def write_fusions_to_fnv(fnv_dict, base_xml_name, output):
     logger.info("Saving fusion variants to fnv file")
 
     with open(
-        "{}/{}/{}.structural.csv".format(output, base_xml_name, base_xml_name),
+        f"{output}/{base_xml_name}/{base_xml_name}.structural.csv",
         "w",
     ) as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=",")

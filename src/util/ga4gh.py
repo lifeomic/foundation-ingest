@@ -1,8 +1,9 @@
 import os
 import base64
+from shutil import copyfile
 
 
-def get_test_yml(results_payload_dict, base_xml_name, output, source, includePatientInfo):
+def get_test_yml(results_payload_dict, base_xml_name, output, source, includePatientInfo, report_file):
     pmi = results_payload_dict.get("FinalReport", {}).get("PMI", {})
     sample = results_payload_dict.get("FinalReport", {}).get("Sample", {})
     variant_report = results_payload_dict.get("variant-report", {})
@@ -78,12 +79,8 @@ def get_test_yml(results_payload_dict, base_xml_name, output, source, includePat
         yaml_file["tests"][0]["tmb"] = tumor_dict.get("@status", "unknown")
         yaml_file["tests"][0]["tmbScore"] = float(tumor_dict.get("@score"))
 
-    if "ReportPDF" in results_payload_dict:
-        pdf = base64.b64decode(results_payload_dict["ReportPDF"])
-        report_file = f"{output}/{base_xml_name}/{base_xml_name}.report.pdf"
-
-        with open(report_file, "wb") as pdf_file:
-            pdf_file.write(pdf)
+    if report_file:
+        copyfile(report_file, f"{output}/{base_xml_name}/{base_xml_name}.report.pdf")
 
         yaml_file["tests"][0][
             "reportFile"

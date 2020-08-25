@@ -99,7 +99,7 @@ def write_copy_numbers_to_cnv(cnv_dict, base_xml_name, output):
     logger.info("Saving copy numbers to cnv file")
 
     with open(
-        "{}/{}/{}.copynumber.csv".format(output, base_xml_name, base_xml_name),
+        f"{output}/{base_xml_name}/{base_xml_name}.copynumber.csv",
         "w",
     ) as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=",")

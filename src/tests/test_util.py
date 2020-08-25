@@ -59,7 +59,7 @@ def test_yml():
 
     xml = read_xml(f"{BASE_PATH}/data/sample.xml")
 
-    yml = get_test_yml(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data", "source", "true")
+    yml = get_test_yml(xml["rr:ResultsReport"]["rr:ResultsPayload"], "SA-1612348", f"{BASE_PATH}/data", "source", "true", None)
 
     print(yml)
 
@@ -103,8 +103,7 @@ def test_yml():
                 ],
                 'msi': 'stable',
                 'tmb': 'low',
-                'tmbScore': 0.73,
-                'reportFile': '.lifeomic/foundation/SA-1612348/SA-1612348.report.pdf'
+                'tmbScore': 0.73
             }
         ]
     }
