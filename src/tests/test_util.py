@@ -72,6 +72,8 @@ def test_yml():
                 'testType': 'FoundationOne Heme',
                 'indexedDate': '2016-07-21',
                 'patientIdentifier': '12345678',
+                'patientDOB': "2002-12-12",
+                'patientLastName': "Patient",
                 'bodySite': 'Bone',
                 'bodySiteSystem': 'http://foundation.com/bodySite',
                 'bodySiteDisplay': 'Bone',

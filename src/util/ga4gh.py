@@ -20,6 +20,8 @@ def get_test_yml(results_payload_dict, base_xml_name, output, source, includePat
                 "testType": sample.get("TestType"),
                 "indexedDate": sample.get("ReceivedDate"),
                 "patientIdentifier": pmi.get("MRN"),
+                "patientDOB": pmi.get("DOB"),
+                "patientLastName": pmi.get("LastName"),
                 "bodySite": variant_report.get("@tissue-of-origin"),
                 "bodySiteSystem": "http://foundation.com/bodySite",
                 "bodySiteDisplay": variant_report.get("@tissue-of-origin"),
