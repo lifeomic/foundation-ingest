@@ -105,7 +105,8 @@ def test_yml():
                 ],
                 'msi': 'stable',
                 'tmb': 'low',
-                'tmbScore': 0.73
+                'tmbScore': 0.73,
+                'lossOfHeterozygosityScore': 21.1
             }
         ]
     }

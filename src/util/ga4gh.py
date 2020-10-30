@@ -2,12 +2,22 @@ import os
 import base64
 from shutil import copyfile
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 def get_test_yml(results_payload_dict, base_xml_name, output, source, includePatientInfo, report_file):
     pmi = results_payload_dict.get("FinalReport", {}).get("PMI", {})
     sample = results_payload_dict.get("FinalReport", {}).get("Sample", {})
     variant_report = results_payload_dict.get("variant-report", {})
     biomarkers = variant_report.get("biomarkers", {})
+    report_properties = results_payload_dict.get("FinalReport", {}).get("reportProperties", {})
+    report_property = report_properties.get("reportProperty", [])
+    properties = report_property if isinstance(report_property, list) else [report_property]
+    gw_loh = next((prop for prop in properties if prop.get("@key") == "LossOfHeterozygosityScore"), None)
 
     os.makedirs(f"{output}/{base_xml_name}", exist_ok=True)
 
@@ -63,6 +73,11 @@ def get_test_yml(results_payload_dict, base_xml_name, output, source, includePat
                 }
             ],
         }
+
+    if gw_loh:
+        value = gw_loh.get("value", "").replace("%", "")
+        # it is possible that value is "Units Not Reported"
+        yaml_file["tests"][0]["lossOfHeterozygosityScore"] = float(value) if is_number(value) else None
 
     if "microsatellite-instability" in biomarkers:
         values = {
