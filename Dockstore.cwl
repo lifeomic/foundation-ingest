@@ -4,7 +4,7 @@ id: foundation-ingest
 label: foundation-ingest
 hints:
   DockerRequirement:
-    dockerPull: lifeomic/foundation-ingest:1.3.1
+    dockerPull: lifeomic/foundation-ingest:2.2.0
 
 inputs:
   xmlFile:
