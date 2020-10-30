@@ -905,6 +905,9 @@
 				<reportProperty identifier="LimsTemp" key="DiseaseOntology">
 					<value>PEDIATRIC Bone osteosarcoma</value>
 				</reportProperty>
+				<reportProperty identifier="AdditionalFindings" key="LossOfHeterozygosityScore">
+          <value>21.1%</value>
+        </reportProperty>
 			</reportProperties>
 			<AAC>
 				<Amendmends/>
