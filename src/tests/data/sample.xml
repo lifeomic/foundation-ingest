@@ -74,6 +74,13 @@
 					<Include>true</Include>
 					<Alterations>
 						<Alteration>
+              <Name>LOH-High</Name>
+              <AlterationProperties>
+                <AlterationProperty isEquivocal="false" name="LOH-High" />
+              </AlterationProperties>
+							<Include>true</Include>
+						</Alteration>
+						<Alteration>
 							<Name>amplification</Name>
 							<AlterationProperties>
 								<AlterationProperty isEquivocal="true" isSubclonal="false" name="amplification"/>
