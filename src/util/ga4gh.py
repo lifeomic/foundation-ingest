@@ -16,6 +16,7 @@ def get_test_yml(results_payload_dict, base_xml_name, output, source, includePat
     biomarkers = variant_report.get("biomarkers", {})
     report_properties = results_payload_dict.get("FinalReport", {}).get("reportProperties", {})
     report_property = report_properties.get("reportProperty", [])
+    genes = results_payload_dict.get("FinalReport", {}).get("Genes", [])
     properties = report_property if isinstance(report_property, list) else [report_property]
     gw_loh = next((prop for prop in properties if prop.get("@key") == "LossOfHeterozygosityScore"), None)
 
@@ -75,9 +76,23 @@ def get_test_yml(results_payload_dict, base_xml_name, output, source, includePat
         }
 
     if gw_loh:
+        values = {
+            "loh-high": "high",
+            "loh-low": "low"
+        }
+        alterations = []
+        gene = genes.get("Gene", [])
+        genes_list = gene if isinstance(gene, list) else [gene]
+        for gene in genes_list:
+            alt = gene.get("Alterations", {}).get("Alteration", [])
+            alterations.extend(alt) if isinstance(alt, list) else alterations.append(alt)
+
+        loh_alt = next((alt for alt in alterations if values.get(alt.get("Name", "").lower())), {})
+
         value = gw_loh.get("value", "").replace("%", "")
         # it is possible that value is "Units Not Reported"
         yaml_file["tests"][0]["lossOfHeterozygosityScore"] = float(value) if is_number(value) else None
+        yaml_file["tests"][0]["lossOfHeterozygosityStatus"] = values.get(loh_alt.get("Name", "").lower(), "unknown")
 
     if "microsatellite-instability" in biomarkers:
         values = {
